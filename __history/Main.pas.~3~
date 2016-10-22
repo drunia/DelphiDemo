@@ -1,0 +1,33 @@
+unit Main;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TMainForm = class(TForm)
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  MainForm: TMainForm;
+
+implementation
+
+uses Intro;
+
+{$R *.dfm}
+
+procedure TMainForm.FormActivate(Sender: TObject);
+begin
+  // Удаляем из памяти Интро-форму
+  FreeAndNil(IntroForm);
+end;
+
+end.

@@ -1,0 +1,39 @@
+unit Intro;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TIntroForm = class(TForm)
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  IntroForm: TIntroForm;
+
+implementation
+
+{$R *.dfm}
+
+uses Main;
+
+procedure TIntroForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  pMainForm: Pointer;
+begin
+  // Закрываем Интро-Форму,
+  // меняем адресс главной формы на MainForm и показываем ее
+  Application.CreateForm(TMainForm, MainForm);
+  pMainForm := @Application.MainForm;
+  Pointer(pMainForm^) := MainForm;
+  MainForm.Show;
+end;
+
+end.
